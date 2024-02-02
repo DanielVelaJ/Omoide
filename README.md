@@ -1,2 +1,3 @@
 # Omoide
-An app made to save beautiful thoughts.
+An app made to explore design systems for medical UIs
+
