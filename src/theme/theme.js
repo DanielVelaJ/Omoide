@@ -18,13 +18,7 @@ export const colors = {
   
   // You can also export common styles if they are reused across multiple components
   export const commonStyles = StyleSheet.create({
-    screenTitle: {
-      fontFamily: fonts.semiBold,
-      fontSize: 24,
-      lineHeight: 32,
-      color: colors.textDark,
-      marginBottom: 10,
-    },
+    
     sectionTitle: {
       fontFamily: fonts.semiBold,
       fontSize: 16,
@@ -38,5 +32,29 @@ export const colors = {
       lineHeight: 24,
       marginBottom: 10,
       color: colors.textDark, // Set the text color for regular text
-    }
+    },
+
+    safeArea: { flex: 1, backgroundColor: colors.background }, // Set the background color for the safe area
+    //Header styles
+    headerContainer: {
+      flexDirection: 'row', // Use row direction for left-to-right layout
+      alignItems: 'center', // Vertically align items in the center
+      justifyContent: 'flex-start', // Horizontally align items to the left
+      color: colors.background,
+      paddingLeft: 30, // Add 30 units of padding to the left
+      paddingRight: 30, // Add 30 units of padding to the right
+      paddingTop: 32
+      // Add any other styles you want for your header container
+    },
+    profilePicture: { width: 48, height: 48, borderRadius: 24, marginRight: 20},
+
+    headerText: {
+      fontFamily: fonts.semiBold,
+      fontSize: 24,
+      lineHeight: 32,
+      color: colors.textDark,
+      marginBottom: 10,
+    },
+
+
   });

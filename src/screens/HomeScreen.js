@@ -5,9 +5,8 @@ import { colors,commonStyles } from '../theme/theme';
 
 const HomeScreen = () => {
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <SafeAreaView style={commonStyles.safeArea}>
       <Header
-        imageUrl="https://example.com/path-to-your-image.jpg"
         message="Welcome to the App!"
       />
       {/* Other components of your screen */}
@@ -15,11 +14,6 @@ const HomeScreen = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-    // You can add additional styling for your screen's safe area
-  },
-});
+
 
 export default HomeScreen;
