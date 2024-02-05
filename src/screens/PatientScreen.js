@@ -3,11 +3,14 @@ import { SafeAreaView, View, Text } from 'react-native';
 import Section from '../components/Section';
 import Header from '../components/Header';
 import InputField from '../components/InputField';
+import PatientForm from '../components/PatientForm';
+
 const PatientScreen = () => (
-    <SafeAreaView>
+    <SafeAreaView style={{ flex: 1 }}>
         <Header message="Who is this patient?" />
-        <InputField fieldName="Name" inputWidth={8*35}/>
+        <PatientForm />
     </SafeAreaView>
 );
 
 export default PatientScreen;
+

@@ -122,25 +122,32 @@ export const commonStyles = StyleSheet.create({
   inputFieldContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    flex:1,
 },
   inputContainer: {
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'stretch',
     borderRadius: 16,
     paddingHorizontal: 16,
     backgroundColor: colors.textLight,
   },
   input: {
-    flex: 1,
     marginLeft: 0,
     color: colors.textDark,
     fontFamily: 'Poppins-Regular',
     fontSize: 16,
     color: colors.textDark,
-    height: 40,
-    paddingTop: 4, // Poppins font is not vertically aligned so added this
-    
+    paddingTop:5,
+    textAlignVertical: 'top',
+  },
 
+  // Patient Form Styles
+  patientFormContainer: {
+    padding: 20,
+    marginHorizontal: 20,
+    marginBottom: 20,
+    borderRadius: 16,
+    backgroundColor: colors.primary,
   },
 
 
