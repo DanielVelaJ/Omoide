@@ -30,23 +30,28 @@ export const commonStyles = StyleSheet.create({
       color: colors.textDark,
     },
     safeArea: { flex: 1, backgroundColor: colors.background },
+    
+      // Header Styles
     headerContainer: {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'flex-start',
       color: colors.background,
-      paddingLeft: 30,
-      paddingRight: 30,
+      paddingHorizontal: 20,
       paddingTop: 32,
       paddingBottom: 40,
     },
-    profilePicture: { width: 48, height: 48, borderRadius: 24, marginRight: 20},
+    profilePicture: { 
+      width: 48, 
+      height: 48, 
+      borderRadius: 24, 
+      marginRight: 20,
+    },
     headerText: {
       fontFamily: fonts.semiBold,
       fontSize: 24,
       lineHeight: 32,
       color: colors.textDark,
-      marginBottom: 32,
     },
 
     // Banner Styles
@@ -57,7 +62,7 @@ export const commonStyles = StyleSheet.create({
         marginHorizontal: 20,
         height: 150,
         justifyContent: 'space-between',
-        marginBottom: 20,
+        marginBottom: 40,
     },
     bannerText: {
       fontFamily: fonts.semiBold,
@@ -82,7 +87,7 @@ export const commonStyles = StyleSheet.create({
 
   // Patient preview styles
   patientPreviewContainer: {
-    backgroundColor: colors.secondary,
+    backgroundColor: colors.primary,
     borderRadius: 16,
     padding: 20,
     marginBottom: 20,
@@ -112,5 +117,19 @@ export const commonStyles = StyleSheet.create({
     justifyContent: 'space-between',
     height:64,
   },
-  
+
+  // Input Field Styles
+  inputFieldContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+},
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderRadius: 16,
+    paddingHorizontal: 16,
+    backgroundColor: colors.textLight,
+  }
+
+
 });

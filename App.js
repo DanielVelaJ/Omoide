@@ -5,6 +5,7 @@ import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 
 import HomeScreen from './src/screens/HomeScreen'; // Import your HomeScreen
+import PatientScreen from './src/screens/PatientScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -22,6 +23,7 @@ export default function App() {
     <NavigationContainer testID="navigation-container">
       <Tab.Navigator>
         <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Patient" component={PatientScreen} />
         {/* Add more Tab.Screen components for other screens */}
       </Tab.Navigator>
     </NavigationContainer>

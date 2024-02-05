@@ -12,14 +12,10 @@ const testPatient = {
   gender: "Male",
   age: 30
 };
-const testData = [testPatient,testPatient,testPatient,testPatient,testPatient,testPatient,testPatient,testPatient,testPatient]
-const DATA = Array.from({ length: 100 }, (_, i) => `Item ${i + 1}`);
-
-const Item = ({ title }) => (
-  <View style={styles.item}>
-    <Text style={styles.title}>{title}</Text>
-  </View>
-);
+const testData = [testPatient,testPatient,
+  testPatient,testPatient,
+  testPatient,testPatient,
+  testPatient,testPatient,testPatient]
 
 
 
@@ -29,7 +25,7 @@ const HomeScreen = () => {
       <Header message="Welcome to the App!"/>
       <TopBanner title={"Create a new patient profile"} 
       buttonTitle="CREATE PATIENT" />
-        <Section title ="Section Title">
+        <Section title ="My patients">
           <FlatList
           data={testData}
           renderItem={({ item }) => <PatientPreview patient={item} />}
