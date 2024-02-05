@@ -7,7 +7,7 @@ const IconWithText = ({ iconName, text, color }) => {
     return (
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent:'center' }}>
             <MaterialIcons name={iconName} color={color} size={24} style={{ marginRight: 10 }} />
-            <Text style={commonStyles.regularText}>{text}</Text>
+            <Text style={[commonStyles.regularText,{color:color}]}>{text}</Text>
         </View>
     );
 };

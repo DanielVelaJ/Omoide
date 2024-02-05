@@ -16,18 +16,17 @@ export const fonts = {
 };
 
 export const commonStyles = StyleSheet.create({
-    sectionTitle: {
-      fontFamily: fonts.semiBold,
-      fontSize: 16,
-      lineHeight: 19,
-      color: colors.textDark,
-      marginBottom: 10,
-    },
+  sectionTitle: {
+    fontFamily: fonts.semiBold,
+    fontSize: 16,
+    lineHeight: 24,
+    color: colors.textDark,
+    marginBottom: 10,
+  },
     regularText: {
       fontFamily: 'Poppins-Regular',
       fontSize: 16,
       lineHeight: 24,
-      marginBottom: 10,
       color: colors.textDark,
     },
     safeArea: { flex: 1, backgroundColor: colors.background },
@@ -72,7 +71,6 @@ export const commonStyles = StyleSheet.create({
       backgroundColor: colors.background,
       borderRadius: 16,
       padding: 8,
-      marginBottom: 10,
       alignItems: 'center',
       justifyContent: 'center',
       alignSelf: 'center'
@@ -81,4 +79,38 @@ export const commonStyles = StyleSheet.create({
     marginHorizontal: 20,
     marginBottom: 20,
   },
+
+  // Patient preview styles
+  patientPreviewContainer: {
+    backgroundColor: colors.secondary,
+    borderRadius: 16,
+    padding: 20,
+    marginBottom: 20,
+    alignItems: 'flex-start',
+    flexDirection: 'column',
+  },
+  patientPreviewName: {
+    fontFamily: fonts.semiBold,
+      fontSize: 16,
+      lineHeight: 24,
+      color: colors.textLight,
+      marginBottom: 10,
+      flexDirection: 'row',
+      alignContent: 'center',
+  },
+  patientPreviewIconsButtonContainer: {
+    flexDirection: 'row',
+    alignItems: 'stretch',
+    justifyContent: 'space-between',
+    paddingHorizontal: 16,
+    width: "100%",
+
+  },
+  patientPreviewIconsContainer: {
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'space-between',
+    height:64,
+  },
+  
 });

@@ -19,7 +19,7 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
+    <NavigationContainer testID="navigation-container">
       <Tab.Navigator>
         <Tab.Screen name="Home" component={HomeScreen} />
         {/* Add more Tab.Screen components for other screens */}
