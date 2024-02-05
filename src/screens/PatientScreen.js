@@ -6,7 +6,7 @@ import InputField from '../components/InputField';
 const PatientScreen = () => (
     <SafeAreaView>
         <Header message="Who is this patient?" />
-        <InputField fieldName="Name" inputWidth={80*3}/>
+        <InputField fieldName="Name" inputWidth={8*35}/>
     </SafeAreaView>
 );
 

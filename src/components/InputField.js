@@ -10,8 +10,10 @@ const InputField = ({ fieldName, inputWidth, ...rest }) => {
             <View style={[commonStyles.inputContainer, { width: inputWidth}]}>
                 <TextInput style={commonStyles.input} {...rest} />
             </View>
+
         </View>
     );
 };
 
 export default InputField;
+

@@ -129,7 +129,19 @@ export const commonStyles = StyleSheet.create({
     borderRadius: 16,
     paddingHorizontal: 16,
     backgroundColor: colors.textLight,
-  }
+  },
+  input: {
+    flex: 1,
+    marginLeft: 0,
+    color: colors.textDark,
+    fontFamily: 'Poppins-Regular',
+    fontSize: 16,
+    color: colors.textDark,
+    height: 40,
+    paddingTop: 4, // Poppins font is not vertically aligned so added this
+    
+
+  },
 
 
 });
