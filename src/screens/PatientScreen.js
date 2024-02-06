@@ -1,16 +1,18 @@
 import React from 'react';
-import { SafeAreaView, View, Text } from 'react-native';
-import Section from '../components/Section';
+import { SafeAreaView } from 'react-native';
 import Header from '../components/Header';
-import InputField from '../components/InputField';
 import PatientForm from '../components/PatientForm';
 
-const PatientScreen = () => (
-    <SafeAreaView style={{ flex: 1 }}>
-        <Header message="Who is this patient?" />
-        <PatientForm />
-    </SafeAreaView>
-);
+const PatientScreen = ({ route }) => {
+    const { patient } = route.params;
+
+    return (
+        <SafeAreaView style={{ flex: 1 }}>
+            <Header message="Who is this patient?" />
+            <PatientForm patient={patient} />
+        </SafeAreaView>
+    );
+};
 
 export default PatientScreen;
 

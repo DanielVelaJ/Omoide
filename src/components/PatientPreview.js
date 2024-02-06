@@ -4,10 +4,7 @@ import { commonStyles, colors } from '../theme/theme';
 import IconWithText from './IconWithText';
 import ButtonSimple from './ButtonSimple';
 
-
-const PatientView = ({ patient }) => {
-    
-
+const PatientView = ({ patient, onPress }) => {
     let genderIcon;
     if (patient.gender === 'Male') {
         genderIcon = "male";
@@ -25,11 +22,10 @@ const PatientView = ({ patient }) => {
                     <IconWithText iconName={genderIcon} text={patient.gender} color={colors.background} />
                     <IconWithText iconName={'elderly'} text={patient.age.toString()} color={colors.background} />
                 </View>
-                <ButtonSimple title="View Profile" />
+                <ButtonSimple title="View Profile" onPress={onPress} />
             </View>
         </View>
     );
 };
 
 export default PatientView;
-

@@ -1,33 +1,49 @@
 import InputField from "./InputField";
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { TextInput, View, StyleSheet, Text } from 'react-native';
 import { commonStyles, colors } from '../theme/theme';
 import Section from "./Section";
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import ButtonSimple from "./ButtonSimple";
 import { useNavigation } from '@react-navigation/native';
+import { usePatients } from '../contexts/PatientsContext';
 
-const PatientForm = () => {
-    const navigation = useNavigation()
-    const [isEditing, setIsEditing] = useState(true);
-    // Initialize a new state variable to hold the form values.
-    const [formValues, setFormValues] = useState({
-        name: '',
-        gender: '',
-        age: '',
-        notes: ''
-    });
+const PatientForm = ({patient}) => {
+    // Hooks
+    const navigation = useNavigation();
+    const { patients, createPatient, updatePatient } = usePatients();
+    const [isEditing, setIsEditing] = useState(!patient);
     const [isValidAge, setIsValidAge] = useState(true);
+    const [formValues, setFormValues] = useState({
+        name: patient ? patient.name : '',
+        gender: patient ? patient.gender : '',
+        age: patient ? patient.age : '',
+        notes: patient ? patient.notes : ''
+    });
 
-    // Function to handle changes in the form values.
+    // Effect hook
+    useEffect(() => {
+        setFormValues({
+            name: patient ? patient.name : '',
+            gender: patient ? patient.gender : '',
+            age: patient ? patient.age : '',
+            notes: patient ? patient.notes : ''
+        });
+    }, [patient]);
+
+    useEffect(() => {
+        setIsEditing(!patient);
+    }, [patient]);
+
+    // Helper functions
     const handleInputChange = (name, value) => {
         setFormValues(prevValues => ({
             ...prevValues,
             [name]: value
         }));
     };
+
     const handleAgeChange = (value) => {
-        // Check if the value is a number and between 0 and 160.
         if (!isNaN(value) && value >= 0 && value <= 160) {
             setIsValidAge(true);
             setFormValues(prevValues => ({
@@ -39,11 +55,10 @@ const PatientForm = () => {
             setFormValues(prevValues => ({
                 ...prevValues,
                 age: ''
-            }))
+            }));
         }
     };
 
-    // Function to reset the form values.
     const resetForm = () => {
         setFormValues({
             name: '',
@@ -53,6 +68,17 @@ const PatientForm = () => {
         });
     };
 
+    const handleSubmit = () => {
+        if (formValues.name && formValues.gender && formValues.age && isValidAge) {
+            if (patient) {
+                updatePatient(patient.id, {...formValues, id: patient.id});
+            } else {
+                createPatient(formValues);
+            }
+            resetForm();
+            navigation.navigate('Home');
+        }
+    };
     return (
         <KeyboardAwareScrollView
             extraScrollHeight={20}
@@ -89,7 +115,7 @@ const PatientForm = () => {
                         style={{marginBottom:16}}
                         isEditing={isEditing}
                         containerColor={isEditing ? colors.textLight : colors.lightBlue}
-                        value={formValues.age} // Set the value prop.
+                        value={(formValues.age || '').toString()} // Set the value prop.
                         onChangeText={value => handleAgeChange(value)} // Set the onChangeText prop.
                     />
                     {!isValidAge && <Text style={{color: colors.error, marginBottom: 16}}>Invalid age</Text>}
@@ -137,14 +163,14 @@ const PatientForm = () => {
                             }}
                         />
                         <ButtonSimple 
-                            title = {"Save"} 
+                            title = {patient ? "Update" : "Save"} 
                             textColor={colors.textLight} 
                             style={{margin:16,
                                     paddingHorizontal:32,
                                     backgroundColor:colors.highlight,
                                     borderColor:colors.textLight,
                                     borderWidth:1}}
-                            onPress={() => setIsEditing(false)}
+                            onPress={handleSubmit}
                             disabled={!formValues.name || !formValues.gender || !formValues.age || !isValidAge}
                         />
 
