@@ -8,11 +8,11 @@ import ButtonSimple from "./ButtonSimple";
 import { useNavigation } from '@react-navigation/native';
 import { usePatients } from '../contexts/PatientsContext';
 
-const PatientForm = ({patient}) => {
+const PatientForm = ({patient, editing}) => {
     // Hooks
     const navigation = useNavigation();
     const { patients, createPatient, updatePatient } = usePatients();
-    const [isEditing, setIsEditing] = useState(!patient);
+    const [isEditing, setIsEditing] = useState(editing);
     const [isValidAge, setIsValidAge] = useState(true);
     const [formValues, setFormValues] = useState({
         name: patient ? patient.name : '',
@@ -22,18 +22,19 @@ const PatientForm = ({patient}) => {
     });
 
     // Effect hook
-    useEffect(() => {
+    const loadFields = () => {
         setFormValues({
             name: patient ? patient.name : '',
             gender: patient ? patient.gender : '',
             age: patient ? patient.age : '',
             notes: patient ? patient.notes : ''
-        });
-    }, [patient]);
+        });};
+
 
     useEffect(() => {
-        setIsEditing(!patient);
-    }, [patient]);
+        setIsEditing(editing);
+        console.log('set is editing to what was passed to editing')
+    }, [editing]);
 
     // Helper functions
     const handleInputChange = (name, value) => {
@@ -79,6 +80,7 @@ const PatientForm = ({patient}) => {
             navigation.navigate('Home');
         }
     };
+
     return (
         <KeyboardAwareScrollView
             extraScrollHeight={20}
@@ -142,14 +144,14 @@ const PatientForm = ({patient}) => {
                                  alignItems:'center', 
                                  justifyContent:'center'}}>
                         <ButtonSimple 
-                            title = {"Back"} 
+                            title = {"Discard"} 
                             textColor={colors.textLight} 
                             style={{margin:16,
                                     paddingHorizontal:32,
                                     backgroundColor:colors.primary,
                                     borderColor:colors.textLight,
                                     borderWidth:1}}
-                            onPress={() => navigation.navigate('Home')}
+                            onPress={()=>{setIsEditing(false), loadFields()}}
                         />
                         <ButtonSimple 
                             title = {"Clean"} 

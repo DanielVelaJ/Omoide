@@ -17,6 +17,8 @@ export const fonts = {
 };
 
 export const commonStyles = StyleSheet.create({
+
+  // Text Styles
   sectionTitle: {
     fontFamily: fonts.semiBold,
     fontSize: 16,
@@ -39,7 +41,7 @@ export const commonStyles = StyleSheet.create({
       justifyContent: 'flex-start',
       color: colors.background,
       paddingHorizontal: 20,
-      paddingTop: 32,
+      paddingTop: 50,
       paddingBottom: 40,
     },
     profilePicture: { 
@@ -82,6 +84,7 @@ export const commonStyles = StyleSheet.create({
       alignSelf: 'center'
   },
   sectionContainer: {
+    flex:1,
     marginHorizontal: 20,
     marginBottom: 20,
   },

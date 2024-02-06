@@ -31,47 +31,48 @@ export const PatientsProvider = ({ children }) => {
         // Validate the new patient data
         if (isValidPatient(newPatient)) {
             // Generate a new ID.
-            const newId = Math.max(...patients.map(patient => patient.id)) + 1;
-
+            const newId = patients.length > 0 ? Math.max(...patients.map(patient => patient.id)) + 1 : 1;
+    
             // Add the new ID to the new patient.
             newPatient.id = newId;
-
+    
+            console.log(`Creating patient with ID ${newId}:`, newPatient);
+    
             setPatients(prevPatients => [...prevPatients, newPatient]);
         }
     };
 
     const updatePatient = (id, updatedPatient) => {
-        console.log('Entering updatePatient function in context file');
-        console.log(`Patient ID to update: ${id}`);
-        console.log('New patient data:', updatedPatient);
-    
         // Validate the updated patient data
         if (isValidPatient(updatedPatient)) {
             // Convert the age property to a number
             updatedPatient.age = Number(updatedPatient.age);
     
+            console.log(`Updating patient with ID ${id}:`, updatedPatient);
+
             setPatients(prevPatients => {
                 const updatedPatients = prevPatients.map(patient => {
                     if (patient.id === Number(id)) {
-                        console.log(`Updating patient with ID: ${id}`);
                         return updatedPatient;
                     } else {
                         return patient;
                     }
                 });
-    
-                console.log('Updated patients list:', updatedPatients);
                 return updatedPatients;
             });
-    
-            console.log('State update function setPatients has been called');
-        } else {
-            console.log('Invalid patient data, not updating');
         }
     };
 
+    const deletePatient = (id) => {
+        console.log(`Deleting patient with ID ${id}`);
+
+        setPatients(prevPatients => {
+            return prevPatients.filter(patient => patient.id !== Number(id));
+        });
+    };
+
     return (
-        <PatientsContext.Provider value={{ patients, createPatient, updatePatient }}>
+        <PatientsContext.Provider value={{ patients, createPatient, updatePatient, deletePatient }}>
             {children}
         </PatientsContext.Provider>
     );
