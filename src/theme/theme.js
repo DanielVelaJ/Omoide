@@ -8,6 +8,7 @@ export const colors = {
     background: "#FFFFFF",
     textDark: "#000000",
     textLight: "#FFFFFF",
+    lightBlue: "#CBEDFB"
 };
 
 export const fonts = {
